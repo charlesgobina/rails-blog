@@ -253,3 +253,12 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 323ms (Views: 321.9ms | Allocations: 95422)
 
 
+Started GET "/" for 127.0.0.1 at 2022-03-31 03:03:51 +0100
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 23)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 13723)
+Completed 200 OK in 18ms (Views: 17.2ms | Allocations: 14612)
+
+
