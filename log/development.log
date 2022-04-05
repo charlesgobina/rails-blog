@@ -1080,3 +1080,27 @@ FOREIGN KEY ("post_id")
   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE (author_id = 4) ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 3]]
   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE (author_id = 9) ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 3]]
   [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE (author_id = 1) ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 3]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (69.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-04-05 20:35:39.271623"], ["updated_at", "2022-04-05 20:35:39.271623"]]
+  [1m[36mTRANSACTION (24.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tom"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-04-05 20:35:56.699026"], ["updated_at", "2022-04-05 20:35:56.699026"]]
+  [1m[36mTRANSACTION (11.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "photo", "bio", "posts_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Zane"], ["photo", "https://unsplash.com/photos/F_-0BxGuVvo"], ["bio", "Teacher from Mexico."], ["posts_counter", 0], ["created_at", "2022-04-05 20:36:22.343728"], ["updated_at", "2022-04-05 20:36:22.343728"]]
+  [1m[36mTRANSACTION (30.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Create (53.6ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "created_at", "updated_at", "like_counter", "comments_counter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 19], ["title", "Hello"], ["text", "This is my first post"], ["created_at", "2022-04-05 20:37:16.878054"], ["updated_at", "2022-04-05 20:37:16.878054"], ["like_counter", 0], ["comments_counter", 0]]
+  [1m[36mUser Update All (0.7ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 19]]
+  [1m[36mTRANSACTION (57.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Create (34.8ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 19], ["post_id", 17], ["text", "I comment on my own post"], ["created_at", "2022-04-05 20:37:58.996758"], ["updated_at", "2022-04-05 20:37:58.996758"]]
+  [1m[36mPost Update All (0.7ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 17]]
+  [1m[36mTRANSACTION (30.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Create (49.2ms)[0m  [1m[32mINSERT INTO "likes" ("author_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["author_id", 19], ["post_id", 17], ["created_at", "2022-04-05 20:38:45.318332"], ["updated_at", "2022-04-05 20:38:45.318332"]]
+  [1m[36mPost Update All (0.8ms)[0m  [1m[33mUPDATE "posts" SET "like_counter" = COALESCE("like_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["like_counter", 1], ["id", 17]]
+  [1m[36mTRANSACTION (27.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE (author_id = 11) ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 3]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE (author_id = 12) ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 3]]
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE (author_id = 13) ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 3]]
