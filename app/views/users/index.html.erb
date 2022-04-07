@@ -1,15 +1,15 @@
 <h1>Users#index</h1>
-<div>
-  <% "<p>No users yet!</p>" if @users.empty? %>
+<div class="user-wrapper">
   <% @users.each do |user|%>
-    <div>
+    <div class="user-ind-wrapper">
       <figure>
         <img src="<%= user.photo %>" width="100px" height="auto" alt="<%= user.name %>">
       </figure>
-      <div>
-        <%= link_to "#{user.name}", user %>
-        <%= "Number of posts: #{user.posts_counter}" %>
+      <div class="user-name-post">
+        <div class="user-name"><%= link_to "#{user.name}", user %></div>
+        <div class="user-post-counter"><%= "Number of posts: #{user.posts_counter}" %></div>
       </div>
     </div>
   <% end %>
 </div>
+
