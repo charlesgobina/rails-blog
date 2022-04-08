@@ -73,6 +73,7 @@ a {
   justify-content: space-between;
   gap: 10px;
   background-color: #eeecec;
+  margin: 10px 0;
   padding: 10px 10px;
   border-radius: 10px;
 }
@@ -81,6 +82,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 
 .user-post,
@@ -122,6 +124,14 @@ a {
   border: none;
   box-shadow: 1px 1px 2px #000;
   cursor: pointer;
+}
+
+.post-new {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  width: 100%;
 }
 
 button {
