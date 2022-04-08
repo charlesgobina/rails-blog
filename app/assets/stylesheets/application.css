@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 /**Users**/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: 'Libre Baskerville', serif;
+  color: rgba(65, 65, 65, 0.719);
+}
+
+a {
+  text-decoration: none;
+  color: rgba(85, 171, 221, 0.719);
 }
 
 .user-ind-wrapper {
@@ -12,7 +20,10 @@
   align-items: center;
   justify-content: space-around;
   gap: 10px;
-  margin: 0 20px ;
+  margin: 10px 20px ;
+  background-color: #eeecec;
+  padding: 10px 10px;
+  border-radius: 10px;
 }
 
 .user-ind-wrapper figure img {
@@ -33,7 +44,7 @@
 }
 
 .user-name {
-  font: normal normal bold 2em serif, Helvetica, Arial, sans-serif;
+  font: normal normal bold 1.5em serif, Helvetica, Arial, sans-serif;
   align-self: flex-start;
   align-content: center;
 }
@@ -61,7 +72,9 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 10px;
-  background-color: #d9d9d9;
+  background-color: #eeecec;
+  padding: 10px 10px;
+  border-radius: 10px;
 }
 
 .user-posts-wrapper {
@@ -110,6 +123,10 @@
   cursor: pointer;
 }
 
+button {
+  border-radius: 10px;
+}
+
 @media screen and (min-width: 768px) {
   .user-ind-wrapper {
     flex-direction: row;
@@ -117,7 +134,7 @@
     justify-content: center;
     gap: 10px;
     width: 50%;
-    margin: 0 auto;
+    margin: 20px auto;
   }
 
   .user-name-post {
@@ -149,7 +166,7 @@
     justify-content: center;
     gap: 10px;
     width: 40%;
-    margin: 0 auto;
+    margin: 20px auto;
   }
 
   .user-post-bio-wrapper {

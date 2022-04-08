@@ -1,6 +1,7 @@
 <h1>Posts#index</h1>
 <%= render "users/user", locals: {user: @user } %>
 <div class="user-post-bio-wrapper">
+  <h2>All Posts</h2>
   <div class="user-posts-wrapper">
     <% @posts.each do |post| %>
       <div class="user-post-ind-wrapper">
@@ -10,13 +11,22 @@
           <span><%= "Likes: #{post.like_counter}" %></span>
         </div>
         <div>
-        <% post.last_5_comment.each do |comment|%>
-          <%= "#{comment.author.name} : #{comment.text}" %>
-        <% end %>
-      </div>
-      </div>
-      
+          <p><%= post.text %></p>
+        </div>        
+        <div>
+          <% post.last_5_comment.each do |comment|%>
+            <p>
+              <i><%= "#{comment.author.name} : #{comment.text}" %><i>
+            </p>
+          <% end %>
+        </div>
+      </div>      
     <% end %>
+    <div class="user-more-posts">
+      <button type="button" class="user-more-posts-btn">
+        Pagination
+      </button>
+    </div>
   </div>
 </div>
 
