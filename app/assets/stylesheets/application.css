@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
-/**Users**/
+
+/**  Users  **/
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +21,7 @@ a {
   align-items: center;
   justify-content: space-around;
   gap: 10px;
-  margin: 10px 20px ;
+  margin: 10px 20px;
   background-color: #eeecec;
   padding: 10px 10px;
   border-radius: 10px;
@@ -35,7 +36,6 @@ a {
 
 .user-name-post {
   display: flex;
-  height: fit-content;
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
@@ -83,7 +83,8 @@ a {
   gap: 20px;
 }
 
-.user-post, .user-bio {
+.user-post,
+.user-bio {
   width: 100%;
 }
 
@@ -105,7 +106,7 @@ a {
   margin: 0;
 }
 
-.user-posts-licom-counter{
+.user-posts-licom-counter {
   align-self: flex-end;
 }
 
@@ -149,7 +150,6 @@ button {
   }
 
   .user-post-bio-wrapper {
-    margin: 0 auto;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
