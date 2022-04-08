@@ -1,15 +1,176 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+/**  Users  **/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Libre Baskerville', serif;
+  color: rgba(65, 65, 65, 0.719);
+}
+
+a {
+  text-decoration: none;
+  color: rgba(85, 171, 221, 0.719);
+}
+
+.user-ind-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  margin: 10px 20px;
+  background-color: #eeecec;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+.user-ind-wrapper figure img {
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.user-name-post {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 20px;
+  width: 90%;
+}
+
+.user-name {
+  font: normal normal bold 1.5em serif, Helvetica, Arial, sans-serif;
+  align-self: flex-start;
+  align-content: center;
+}
+
+.user-post-counter {
+  align-self: flex-end;
+}
+
+.user-post-title {
+  font: normal normal normal 1.3em serif, Helvetica, Arial, sans-serif;
+}
+
+.user-post-bio-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 20px;
+}
+
+.user-post-ind-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: #eeecec;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+.user-posts-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.user-post,
+.user-bio {
+  width: 100%;
+}
+
+.user-post h2 {
+  font: normal normal bold 2em serif, Helvetica, Arial, sans-serif;
+  text-align: left;
+  margin: 0;
+}
+
+.user-bio h2 {
+  font: normal normal bold 2em serif, Helvetica, Arial, sans-serif;
+  text-align: left;
+  margin: 0;
+}
+
+.user-bio p {
+  font: normal normal normal 1.3em serif, Helvetica, Arial, sans-serif;
+  text-align: left;
+  margin: 0;
+}
+
+.user-posts-licom-counter {
+  align-self: flex-end;
+}
+
+.user-more-posts {
+  text-align: center;
+}
+
+.user-more-posts-btn {
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px 5px;
+  outline: none;
+  border: none;
+  box-shadow: 1px 1px 2px #000;
+  cursor: pointer;
+}
+
+button {
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .user-ind-wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 50%;
+    margin: 20px auto;
+  }
+
+  .user-name-post {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .user-name {
+    font: normal normal bold 2em serif, Helvetica, Arial, sans-serif;
+  }
+
+  .user-post-bio-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 10px;
+    width: 50%;
+    margin: 20px auto;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .user-ind-wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 40%;
+    margin: 20px auto;
+  }
+
+  .user-post-bio-wrapper {
+    width: 40%;
+    margin: 20px auto;
+  }
+}

@@ -1,2 +1,15 @@
 <h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="user-wrapper">
+  <% @users.each do |user|%>
+    <div class="user-ind-wrapper">
+      <figure>
+        <img src="<%= user.photo %>" width="100px" height="auto" alt="<%= user.name %>">
+      </figure>
+      <div class="user-name-post">
+        <div class="user-name"><%= link_to "#{user.name}", user %></div>
+        <div class="user-post-counter"><%= "Number of posts: #{user.posts_counter}" %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+

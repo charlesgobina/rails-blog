@@ -1,2 +1,33 @@
 <h1>Users#show</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<%= render "user"%>
+<div class="user-post-bio-wrapper">
+  <div class="user-bio">
+    <h2>Biography</h2>
+    <p>
+      <%= @user.bio %>
+    </p>
+  </div>
+  <div class="user-post">
+    <h2>Recent Posts</h2>
+    <div class="user-posts-wrapper">
+      <% render "nopost" if @user_posts.empty? %>
+      <% @user_posts.each do |user_post| %>
+        <div class="user-post-ind-wrapper">
+          <div class="user-post-title"><%= user_post.title %></div>
+          <div class="user-posts-licom-counter">
+            <span><%= "Comments: #{user_post.comments_counter}" %></span>
+            <span><%= "Likes: #{user_post.like_counter}" %></span>
+          </div>
+          <div>
+            <p><%= user_post.text %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="user-more-posts">
+      <button type="button" class="user-more-posts-btn">
+        <%= link_to "See all posts", user_posts_path(@user) %>
+      </button>
+    </div>
+  </div>
+</div>
