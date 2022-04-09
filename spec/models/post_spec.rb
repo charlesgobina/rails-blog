@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  describe "Post Modes" do
+  describe 'Post Modes' do
     user = User.create name: 'Charles', photo: 'some_pic', bio: 'Full-Stack Dev'
     post = Post.new author: user, title: 'samsung', text: 'samsung post'
-
 
     it 'title should be present' do
       post.title = nil
@@ -29,7 +28,5 @@ RSpec.describe Post, type: :model do
       expect(post).to_not be_valid
       post.like_counter = 0
     end
-  
   end
-  
 end
