@@ -19,10 +19,10 @@ class PostsController < ApplicationController
     post = current_user.posts.new(post_params)
 
     if post.save
-      flash.notice = "Post was successfully created."
-      redirect_to user_posts_path(post.author) 
+      flash.notice = 'Post was successfully created.'
+      redirect_to user_posts_path(post.author)
     else
-      flash.alert = "Post was not created."
+      flash.alert = 'Post was not created.'
       render :new
     end
   end
