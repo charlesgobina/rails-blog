@@ -4,9 +4,11 @@ class LikesController < ApplicationController
     @like = Like.new(author_id: current_user.id, post_id: @post.id)
 
     if @like.save
-      redirect_to user_post_path(user_id: current_user.id, id: @post.id), notice: 'You liked this post!'
+      flash.notice = "You liked this post!"
+      redirect_to user_post_path(user_id: current_user.id, id: @post.id)
     else
-      redirect_to user_post_path(user_id: current_user.id, id: @post.id), alert: 'Error liking post!'
+      flash.alert = "Error liking post!"
+      redirect_to user_post_path(user_id: current_user.id, id: @post.id)
     end
   end
 end
