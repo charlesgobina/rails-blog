@@ -1,10 +1,10 @@
 class Post < ApplicationRecord
   belongs_to :author, class_name: 'User'
-  has_many :comment, class_name: 'Comment', dependent: :destroy
-  has_many :like, class_name: 'Like', dependent: :destroy
+  has_many :comments, class_name: 'Comment', dependent: :destroy
+  has_many :likes, class_name: 'Like', dependent: :destroy
 
   def last_5_comment
-    comment.limit(5).order(created_at: :desc)
+    comments.limit(5).order(created_at: :desc)
   end
 
   after_save :update_post_counter

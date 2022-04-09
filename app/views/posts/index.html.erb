@@ -1,7 +1,13 @@
 <h1>Posts#index</h1>
 <%= render "users/user", locals: {user: @user } %>
 <div class="user-post-bio-wrapper">
-  <h2>All Posts</h2>
+  <div class="post-new">
+    <h2>All Posts</h2>
+    <button type="button" class="user-more-posts-btn">
+      <%= link_to "New Post", new_user_post_path %>
+    </button>
+  </div>
+  
   <div class="user-posts-wrapper">
     <% @posts.each do |post| %>
       <div class="user-post-ind-wrapper">
@@ -13,13 +19,13 @@
         <div>
           <p><%= post.text %></p>
         </div>        
+        <% post.last_5_comment.each do |comment|%>
         <div>
-          <% post.last_5_comment.each do |comment|%>
-            <p>
-              <i><%= "#{comment.author.name} : #{comment.text}" %><i>
-            </p>
-          <% end %>
+          <p>
+            <i><%= "#{comment.author.name} : #{comment.text}" %><i>
+          </p>
         </div>
+        <% end %>
       </div>      
     <% end %>
     <div class="user-more-posts">
