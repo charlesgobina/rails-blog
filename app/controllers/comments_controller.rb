@@ -8,8 +8,10 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:comment][:post_id])
 
     if @comment.save
+      flash.notice = 'Comment was successfully created.'
       redirect_to "/users/#{@post.author_id}/posts/#{@post.id}/"
     else
+      flash.alert = 'Comment was not created.'
       render :new
     end
   end

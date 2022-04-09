@@ -2,12 +2,12 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @user_posts = User.last_3_posts(params[:user_id])
-    @posts = @user.posts
+    @posts = @user.posts.includes(:comments, :likes)
   end
 
   def show
-    @post = Post.find(params[:id])
-    @comments = @post.comments
+    @post = Post.includes(:comments, :likes).find(params[:id])
+    @comments = @post.comments.includes(:author)
     @user = @post.author
   end
 
@@ -19,8 +19,10 @@ class PostsController < ApplicationController
     post = current_user.posts.new(post_params)
 
     if post.save
+      flash.notice = 'Post was successfully created.'
       redirect_to user_posts_path(post.author)
     else
+      flash.alert = 'Post was not created.'
       render :new
     end
   end

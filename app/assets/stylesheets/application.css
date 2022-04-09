@@ -145,6 +145,13 @@ button {
   border-radius: 10px;
 }
 
+.flash-msg {
+  margin: 10px auto;
+  width: 100%;
+  color: rgb(92, 212, 92);
+  text-align: right;
+}
+
 @media screen and (min-width: 768px) {
   .user-ind-wrapper {
     flex-direction: row;
