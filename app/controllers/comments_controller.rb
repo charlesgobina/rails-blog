@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:comment][:post_id])
 
     if @comment.save
-      redirect_to "/users/#{@post.author_id}/posts/#{@post.id}/"
+      redirect_to "/users/#{@post.author_id}/posts/#{@post.id}/", notice: 'Comment was successfully created.'
     else
-      render :new
+      render :new, alert: 'Comment was not created.'
     end
   end
 
