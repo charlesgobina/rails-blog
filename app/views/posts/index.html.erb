@@ -19,15 +19,13 @@
         <div>
           <p><%= post.text %></p>
         </div>        
-        
-          <% post.last_5_comment.each do |comment|%>
-          <div>
-            <p>
-              <i><%= "#{comment.author.name} : #{comment.text}" %><i>
-            </p>
-          </div>
-          <% end %>
-        
+        <% post.last_5_comment.each do |comment|%>
+        <div>
+          <p>
+            <i><%= "#{comment.author.name} : #{comment.text}" %><i>
+          </p>
+        </div>
+        <% end %>
       </div>      
     <% end %>
     <div class="user-more-posts">

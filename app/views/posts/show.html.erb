@@ -1,24 +1,48 @@
 <h1>Posts#Show</h1>
 <div class="user-post-bio-wrapper">
   <div class="user-posts-wrapper">
-      <div class="user-post-ind-wrapper">
-        <div class="user-post-title">
-          <h2><%= "#{@post.title} by #{@post.author.name}" %></h2>
-        </div>
-        <div class="user-posts-licom-counter">
-          <span><%= "Comments: #{@post.comments_counter}" %></span>
-          <span><%= "Likes: #{@post.like_counter}" %></span>
-        </div>
-        <div>
-          <p><%= @post.text %></p>
-        </div>
-        <div>
+    <div class="user-post-ind-wrapper">
+      <div class="user-post-title">
+        <h2><%= "#{@post.title} by #{@post.author.name}" %></h2>
+      </div>
+      <div class="user-posts-licom-counter">
+        <span><%= "Comments: #{@post.comments_counter}" %></span>
+        <span><%= "Likes: #{@post.like_counter}" %></span>
+      </div>
+      <div class="post-comment-text">
+        <p><%= @post.text %></p>
+        <%= form_with model: @like, url: user_post_likes_path(user_id: current_user.id, post_id: @post.id) do |form| %>
+          <div>
+            <%= form.hidden_field :author_id, value: current_user.id %>
+          </div>
+          <div>
+            <%= form.hidden_field :post_id, value: @post.id %>
+          </div>
+          <%= form.submit 'Like' %>
+        <% end %>
+      </div>
+      <div>
         <% @post.last_5_comment.each do |comment|%>
           <p>
             <%= "#{comment.author.name} : #{comment.text}" %>
           </p>
         <% end %>
       </div>
-      </div>
+    </div>
+    <div class="post-comment">
+      <%= form_with model: @comment, url: "/users/#{current_user.id}/posts/#{@post.id}/comments", scope: :comment do |form| %>
+        <div>
+          <%= form.hidden_field :author_id, value: current_user.id %>
+        </div>
+        <div>
+          <%= form.hidden_field :post_id, value: @post.id %>
+        </div>
+        <div>
+          <%= form.label :text %>
+          <%= form.text_area :text %>
+        </div>
+        <%= form.submit 'Comment' %>
+      <% end %>
+    </div>
   </div>
 </div>
