@@ -11,26 +11,46 @@
   <div class="user-posts-wrapper">
     <% @posts.each do |post| %>
       <div class="user-post-ind-wrapper">
-        <div class="user-post-title"><%= link_to "#{post.title}", user_post_path(@user.id, post.id) %></div>
-        <div class="user-posts-licom-counter">
-          <span><%= "Comments: #{post.comments_counter}" %></span>
-          <span><%= "Likes: #{post.like_counter}" %></span>
+        <div class="post-title-area">
+          <div class="user-post-title"><%= link_to "#{post.title}", user_post_path(@user.id, post.id) %></div>
+          <div class="user-posts-licom-counter">
+            <div class="post-comment">
+              <span>💬</span>
+              <small><%= "#{post.comments_counter}" %></small>
+            </div>
+            <div class="post-like">
+              <span>👍</span>
+              <small><%= "#{post.like_counter}" %></small>
+            </div>
+          </div>
         </div>
-        <div>
-          <p><%= post.text %></p>
-        </div>        
-        <% post.last_5_comment.each do |comment|%>
-        <div>
-          <p>
-            <i><%= "#{comment.author.name} : #{comment.text}" %><i>
-          </p>
+        <div class="post-text">
+          <p><%= post.text.truncate(300) %></p>
         </div>
-        <% end %>
+        <div class="post-comment-section">
+          <h3 class="intermediate-heading">Comments</h3>
+          <% post.last_5_comment.each do |comment|%>
+            <small class="post-comment-avatar">
+              <div class="comment-avatar-name">
+                <img src="<%= comment.author.photo %>" alt="<%= comment.author.name %>" class="comment-avatar">
+                <h4><%= "#{comment.author.name}" %><h4>
+              </div>
+              <div class="comment-text">
+                <%= "#{comment.text}" %>
+              </div>
+            </small>
+          <% end %>
+        </div>
+        <div class="user-more-posts post-see-more">
+          <button type="button" class="user-more-posts-btn">
+            <%= link_to "See more", user_post_path(@user.id, post.id) %>
+          </button>
+        </div> 
       </div> 
     <% end %>
     <div class="user-more-posts">
       <button type="button" class="user-more-posts-btn">
-        Pagination
+        <%= link_to "Go back", user_path(@user.id) %>
       </button>
     </div>
   </div>

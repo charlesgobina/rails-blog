@@ -2,30 +2,52 @@
 <div class="user-post-bio-wrapper">
   <div class="user-posts-wrapper">
     <div class="user-post-ind-wrapper">
-      <div class="user-post-title">
-        <h2><%= "#{@post.title} by #{@post.author.name}" %></h2>
-      </div>
-      <div class="user-posts-licom-counter">
-        <span><%= "Comments: #{@post.comments_counter}" %></span>
-        <span><%= "Likes: #{@post.like_counter}" %></span>
-      </div>
-      <div class="post-comment-text">
-        <p><%= @post.text %></p>
-        <%= form_with model: @like, url: user_post_likes_path(user_id: current_user.id, post_id: @post.id) do |form| %>
-          <div>
-            <%= form.hidden_field :author_id, value: current_user.id %>
+      <div class="post-body">
+        <div class="post-title-area">
+          <div class="user-post-title">
+            <h2><%= "#{@post.title} by #{@post.author.name}" %></h2>
           </div>
-          <div>
-            <%= form.hidden_field :post_id, value: @post.id %>
+          <div class="user-posts-licom-counter">
+            <div class="post-comment">
+              <span>💬</span>
+              <small><%= "#{@post.comments_counter}" %></small>
+            </div>
+            <div class="post-like">
+              <span>👍</span>
+              <small><%= "#{@post.like_counter}" %></small>
+            </div>
           </div>
-          <%= form.submit 'Like' %>
-        <% end %>
+        </div>
+        <div class="post-likes-text post-text-show">
+          <p><%= @post.text %></p>
+          <div class="post-likes">
+            <%= form_with model: @like, url: user_post_likes_path(user_id: current_user.id, post_id: @post.id) do |form| %>
+              <div>
+                <%= form.hidden_field :author_id, value: current_user.id %>
+              </div>
+              <div>
+                <%= form.hidden_field :post_id, value: @post.id %>
+              </div>
+              <%= form.submit '👍', class: 'form-submit' %>
+            <% end %>
+          </div>
+
+        </div>
       </div>
-      <div>
+    </div>
+    <div class="user-post-ind-wrapper">
+      <div class="post-comment-section">
+        <h3 class="intermediate-heading">Comments</h3>
         <% @post.last_5_comment.each do |comment|%>
-          <p>
-            <%= "#{comment.author.name} : #{comment.text}" %>
-          </p>
+          <small class="post-comment-avatar">
+            <div class="comment-avatar-name">
+              <img src="<%= comment.author.photo %>" alt="<%= comment.author.name %>" class="comment-avatar">
+              <h4><%= "#{comment.author.name}" %><h4>
+            </div>
+            <div class="comment-text">
+              <%= "#{comment.text}" %>
+            </div>
+          </small>
         <% end %>
       </div>
     </div>
