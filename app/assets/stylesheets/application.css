@@ -126,7 +126,8 @@ a {
   gap: 10px;
 }
 
-.post-like, .post-comment {
+.post-like,
+.post-comment {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -209,6 +210,10 @@ a {
   align-self: flex-end;
 }
 
+button {
+  border-radius: 10px;
+}
+
 .post-see-more button {
   font-size: small;
 }
@@ -240,7 +245,6 @@ a {
   color: #fff;
 }
 
-
 .intermediate-heading {
   font: normal normal bold 1em serif, Helvetica, Arial, sans-serif;
   text-align: left;
@@ -259,11 +263,6 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-
-button {
-  border-radius: 10px;
 }
 
 .flash-msg {
