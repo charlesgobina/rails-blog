@@ -32729,3 +32729,202 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 25ms (Views: 24.6ms | ActiveRecord: 10.0ms | Allocations: 9800)
 
 
+Started GET "/users/1" for 127.0.0.1 at 2022-04-10 14:27:13 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 9.2ms | Allocations: 202)
+  [1m[36mPost Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "posts" WHERE (author_id = 1) LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:13
+  Rendered users/_nopost.html.erb (Duration: 1.5ms | Allocations: 106)
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE (author_id = 1) ORDER BY "posts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:14
+  Rendered users/show.html.erb within layouts/application (Duration: 37.2ms | Allocations: 2410)
+  Rendered layout layouts/application.html.erb (Duration: 43.2ms | Allocations: 4756)
+Completed 200 OK in 71ms (Views: 42.1ms | ActiveRecord: 4.0ms | Allocations: 14346)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2022-04-10 14:27:33 +0100
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1303)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 1388)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.6ms | Allocations: 7346)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Posts#index</h1>
+<%= render "users/user", locals: {user: @user } %>
+<div class="user-post-bio-wrapper">
+  <div class="post-new">
+    <h2>All Posts</h2>
+    <button type="button" class="user-more-posts-btn">
+      <%= link_to "New Post", new_user_post_path %>
+    </button>
+  </div>
+  
+  <div class="user-posts-wrapper">
+    <% @posts.each do |post| %>
+      <div class="user-post-ind-wrapper">
+        <div class="user-post-title"><%= link_to "#{post.title}", user_post_path(@user.id, post.id) %></div>
+        <div class="user-posts-licom-counter">
+          <span><%= "Comments: #{post.comments_counter}" %></span>
+          <span><%= "Likes: #{post.like_counter}" %></span>
+        </div>
+        <div>
+          <p><%= post.text %></p>
+        </div>        
+        <% post.last_5_comment.each do |comment|%>
+        <div>
+          <p>
+            <i><%= "#{comment.author.name} : #{comment.text}" %><i>
+          </p>
+        </div>
+        <% end %>
+      </div> 
+      <%= render layout: %>     
+    <% end %>
+    <div class="user-more-posts">
+      <button type="button" class="user-more-posts-btn">
+        Pagination
+      </button>
+    </div>
+  </div>
+</div>
+
+
+):
+1:    <h1>Posts#index</h1>
+2:    <%= render "users/user", locals: {user: @user } %>
+3:    <div class="user-post-bio-wrapper">
+4:      <div class="post-new">
+5:        <h2>All Posts</h2>
+6:        <button type="button" class="user-more-posts-btn">
+7:          <%= link_to "New Post", new_user_post_path %>
+8:        </button>
+9:      </div>
+10:      
+11:      <div class="user-posts-wrapper">
+12:        <% @posts.each do |post| %>
+13:          <div class="user-post-ind-wrapper">
+14:            <div class="user-post-title"><%= link_to "#{post.title}", user_post_path(@user.id, post.id) %></div>
+15:            <div class="user-posts-licom-counter">
+16:              <span><%= "Comments: #{post.comments_counter}" %></span>
+17:              <span><%= "Likes: #{post.like_counter}" %></span>
+18:            </div>
+19:            <div>
+20:              <p><%= post.text %></p>
+21:            </div>        
+22:            <% post.last_5_comment.each do |comment|%>
+23:            <div>
+24:              <p>
+25:                <i><%= "#{comment.author.name} : #{comment.text}" %><i>
+26:              </p>
+27:            </div>
+28:            <% end %>
+29:          </div> 
+30:          <%= render layout: %>     
+31:        <% end %>
+32:        <div class="user-more-posts">
+33:          <button type="button" class="user-more-posts-btn">
+34:            Pagination
+35:          </button>
+36:        </div>
+37:      </div>
+38:    </div>
+  
+app/views/posts/index.html.erb:30: syntax error, unexpected ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:30: syntax error, unexpected ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:30: syntax error, unexpected ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:30: syntax error, unexpected ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:30: syntax error, unexpected ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:30: syntax error, unexpected ')'
+app/views/posts/index.html.erb:31: syntax error, unexpected `end', expecting ')'
+app/views/posts/index.html.erb:42: syntax error, unexpected `end', expecting ')'
+Started GET "/users/1/posts" for 127.0.0.1 at 2022-04-10 14:28:19 +0100
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.5ms | Allocations: 199)
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/index.html.erb:12
+  Rendered posts/index.html.erb within layouts/application (Duration: 76.4ms | Allocations: 7054)
+  Rendered layout layouts/application.html.erb (Duration: 85.2ms | Allocations: 9827)
+Completed 200 OK in 90ms (Views: 86.7ms | ActiveRecord: 0.5ms | Allocations: 11775)
+
+
+Started GET "/users/1/posts/new" for 127.0.0.1 at 2022-04-10 14:28:30 +0100
+Processing by PostsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  Rendered posts/new.html.erb within layouts/application (Duration: 361.3ms | Allocations: 5110)
+  Rendered layout layouts/application.html.erb (Duration: 364.1ms | Allocations: 7261)
+Completed 200 OK in 386ms (Views: 364.7ms | ActiveRecord: 5.2ms | Allocations: 11630)
+
+
+Started POST "/users/1/posts" for 127.0.0.1 at 2022-04-10 14:28:50 +0100
+Processing by PostsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"author_id"=>"1", "title"=>"Hello Folks", "text"=>"This is my first post"}, "commit"=>"Create Post", "user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+[31mUnpermitted parameter: :author_id. Context: { controller: PostsController, action: create, request: #<ActionDispatch::Request:0x00007ff5700d0698>, params: {"authenticity_token"=>"[FILTERED]", "post"=>{"author_id"=>"1", "title"=>"Hello Folks", "text"=>"This is my first post"}, "commit"=>"Create Post", "controller"=>"posts", "action"=>"create", "user_id"=>"1"} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:21:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:21:in `create'
+  [1m[36mPost Create (1.5ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "created_at", "updated_at", "like_counter", "comments_counter") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 1], ["title", "Hello Folks"], ["text", "This is my first post"], ["created_at", "2022-04-10 13:28:50.800742"], ["updated_at", "2022-04-10 13:28:50.800742"], ["like_counter", 0], ["comments_counter", 0]]
+  ↳ app/controllers/posts_controller.rb:21:in `create'
+  [1m[36mUser Update All (0.7ms)[0m  [1m[33mUPDATE "users" SET "posts_counter" = COALESCE("posts_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["posts_counter", 1], ["id", 1]]
+  ↳ app/models/post.rb:19:in `update_post_counter'
+  [1m[36mTRANSACTION (28.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:21:in `create'
+Redirected to http://127.0.0.1:3000/users/1/posts
+Completed 302 Found in 88ms (ActiveRecord: 32.5ms | Allocations: 12440)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2022-04-10 14:28:50 +0100
+Processing by PostsController#index as TURBO_STREAM
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.2ms | Allocations: 26)
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/index.html.erb:12
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/index.html.erb:12
+  [1m[36mLike Load (1.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/index.html.erb:12
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 1], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:22
+  Rendered posts/index.html.erb within layouts/application (Duration: 108.9ms | Allocations: 11964)
+  Rendered layout layouts/application.html.erb (Duration: 117.6ms | Allocations: 14351)
+Completed 200 OK in 126ms (Views: 109.5ms | ActiveRecord: 10.2ms | Allocations: 15479)
+
+
