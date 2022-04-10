@@ -13,13 +13,23 @@
       <% render "nopost" if @user_posts.empty? %>
       <% @user_posts.each do |user_post| %>
         <div class="user-post-ind-wrapper">
-          <div class="user-post-title"><%= user_post.title %></div>
-          <div class="user-posts-licom-counter">
-            <span><%= "Comments: #{user_post.comments_counter}" %></span>
-            <span><%= "Likes: #{user_post.like_counter}" %></span>
-          </div>
-          <div>
-            <p><%= user_post.text %></p>
+          <div class="post-body">
+            <div class="post-title-area">
+              <div class="user-post-title-u"><%= user_post.title %></div>
+              <div class="user-posts-licom-counter">
+                <div class="post-comment">
+                  <span>💬</span>
+                  <small><%= "#{user_post.comments_counter}" %></small>
+                </div>
+                <div class="post-like">
+                  <span>👍</span>
+                  <small><%= "#{user_post.like_counter}" %></small>
+                </div>
+              </div>
+            </div>
+            <div class="post-text">
+              <p><%= user_post.text.truncate(300) %></p>
+            </div>
           </div>
         </div>
       <% end %>
