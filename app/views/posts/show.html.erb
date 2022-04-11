@@ -4,7 +4,7 @@
     <div class="user-post-ind-wrapper">
       <div class="post-body">
         <div class="post-title-area">
-          <div class="user-post-title">
+          <div class="user-post-title-s">
             <h2><%= "#{@post.title} by #{@post.author.name}" %></h2>
           </div>
           <div class="user-posts-licom-counter">
@@ -38,6 +38,7 @@
     <div class="user-post-ind-wrapper">
       <div class="post-comment-section">
         <h3 class="intermediate-heading">Comments</h3>
+        <small> <%= no_comment %> </small>
         <% @post.last_5_comment.each do |comment|%>
           <small class="post-comment-avatar">
             <div class="comment-avatar-name">
@@ -51,7 +52,7 @@
         <% end %>
       </div>
     </div>
-    <div class="post-comment">
+    <div class="post-form-comment">
       <%= form_with model: @comment, url: "/users/#{current_user.id}/posts/#{@post.id}/comments", scope: :comment do |form| %>
         <div>
           <%= form.hidden_field :author_id, value: current_user.id %>
@@ -59,11 +60,10 @@
         <div>
           <%= form.hidden_field :post_id, value: @post.id %>
         </div>
-        <div>
-          <%= form.label :text %>
-          <%= form.text_area :text %>
+        <div class="form-textarea">
+          <%= form.text_area :text, size: "60x10", placeholder: "Leave a comment" %>
         </div>
-        <%= form.submit 'Comment' %>
+        <%= form.submit 'Comment', class: 'form-submit-comment' %>
       <% end %>
     </div>
   </div>
