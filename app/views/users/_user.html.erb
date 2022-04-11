@@ -5,7 +5,12 @@
     </figure>
     <div class="user-name-post">
       <div class="user-name"><%= @user.name %></div>
-      <div class="user-post-counter"><%= "Number of posts: #{@user.posts_counter}" %></div>
+      <div class="user-post-counter">
+        <div class="user-like">
+          <small class="user-like-text"><%= "#{@user.posts_counter}" %></small>
+          <span class="user-like-text">Posts</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>

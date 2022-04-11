@@ -1,16 +1,18 @@
 <h1>Posts#New</h1>
 
-<%= form_with model: @post, url: "/users/#{current_user.id}/posts" do |form| %>
-  <div>
-    <%= form.hidden_field :author_id, value: current_user.id %>
-  </div>
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  <div>
-    <%= form.label :text %>
-    <%= form.text_area :text %>
-  </div>
-  <%= form.submit %>
-<% end %>
+<div class="post-new">
+  <%= form_with model: @post, url: "/users/#{current_user.id}/posts" do |form| %>
+    <div>
+      <%= form.hidden_field :author_id, value: current_user.id %>
+    </div>
+    <div class="form-new-title">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'new-title' %>
+    </div>
+    <div class="form-new-post">
+      <%= form.label :text %>
+      <%= form.text_area :text, size: '90x20' %>
+    </div>
+    <%= form.submit class: 'form-submit-comment' %>
+  <% end %>
+</div>
