@@ -50,6 +50,9 @@
           <button type="button" class="user-more-posts-btn">
             <%= link_to "See more", user_post_path(@user.id, post.id) %>
           </button>
+          <% if can? :destroy, post %>
+            <%= button_to '🗑️', user_post_path(@user.id, post.id), :method => :delete, class: 'form-trash' %>
+          <%end%>
         </div> 
       </div> 
     <% end %>
