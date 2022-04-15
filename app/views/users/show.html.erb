@@ -15,7 +15,7 @@
         <div class="user-post-ind-wrapper">
           <div class="post-body">
             <div class="post-title-area">
-              <div class="user-post-title-u"><%= user_post.title %></div>
+              <div class="user-post-title-u"><%= link_to "#{user_post.title}", user_post_path(@user.id, user_post.id) %></div>
               <div class="user-posts-licom-counter">
                 <div class="post-comment">
                   <span>💬</span>

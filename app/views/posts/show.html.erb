@@ -28,10 +28,11 @@
               <div>
                 <%= form.hidden_field :post_id, value: @post.id %>
               </div>
-              <%= form.submit '👍', class: 'form-submit' %>
+              <div class="post-actions">
+                <%= form.submit '👍', class: 'form-submit' %>
+              </div>
             <% end %>
           </div>
-
         </div>
       </div>
     </div>

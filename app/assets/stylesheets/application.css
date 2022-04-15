@@ -23,7 +23,7 @@ a {
   gap: 10px;
   margin: 10px 20px;
   background-color: #f8f8f8;
-  border-left: 3px solid rgb(245, 135, 135);
+  border-left: 3px solid #6e2afe;
   padding: 10px 10px;
   border-radius: 10px;
 }
@@ -97,7 +97,7 @@ button a {
   justify-content: space-between;
   gap: 10px;
   background-color: #f8f8f8;
-  border-left: 3px solid rgb(245, 135, 135);
+  border-left: 3px solid #6e2afe;
   margin: 10px 0;
   padding: 10px 10px;
   border-radius: 10px;
@@ -147,7 +147,7 @@ button a {
   border-radius: 10px;
   padding: 5px;
   border: none;
-  background-color: rgb(245, 135, 135);
+  background-color: #6e2afe;
 }
 
 .user-like-text {
@@ -245,7 +245,7 @@ button a {
 
 button {
   border-radius: 10px;
-  background-color: rgb(245, 135, 135);
+  background-color: #6e2afe;
   font-size: 1em;
   padding: 5px;
   border: none;
@@ -265,7 +265,7 @@ button:active {
 .post-see-more button {
   font-size: small;
   border-radius: 10px;
-  background-color: rgb(245, 135, 135);
+  background-color: #6e2afe;
   padding: 5px;
   border: none;
   cursor: pointer;
@@ -281,7 +281,7 @@ button:active {
   border-radius: 10px;
   padding: 5px;
   border: none;
-  background-color: rgb(245, 135, 135);
+  background-color: #6e2afe;
   color: #fff;
 }
 
@@ -289,7 +289,7 @@ button:active {
   border-radius: 10px;
   padding: 5px;
   border: none;
-  background-color: rgb(245, 135, 135);
+  background-color: #6e2afe;
 }
 
 .post-form-comment form {
@@ -325,7 +325,7 @@ textarea {
   border-radius: 10px;
   padding: 10px;
   border: none;
-  border-left: 3px solid rgb(245, 135, 135);
+  border-left: 3px solid #6e2afe;
   background-color: #f8f8f8;
 }
 
@@ -349,11 +349,11 @@ textarea {
   background-color: #f8f8f8;
   border-radius: 10px;
   border: none;
-  border-left: 3px solid rgb(245, 135, 135);
+  border-left: 3px solid #6e2afe;
 }
 
 .form-new-title .new-title:focus {
-  border-left: 3px solid rgb(245, 135, 135);
+  border-left: 3px solid #6e2afe;
   border-top: none;
   border-bottom: none;
   outline: none;
@@ -376,7 +376,7 @@ form .form-textarea {
 }
 
 textarea:focus {
-  border-left: 3px solid rgb(245, 135, 135);
+  border-left: 3px solid #6e2afe;
   border-top: none;
   border-bottom: none;
   outline: none;
@@ -433,7 +433,7 @@ textarea:focus {
   border-radius: 10px;
   padding: 5px;
   border: none;
-  background-color: rgb(245, 135, 135);
+  background-color: #6e2afe;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -446,12 +446,31 @@ textarea:focus {
   background-color: #fff;
 }
 
+.form-trash {
+  font-size: 1.4em;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+  background-color: #f00;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-trash:hover {
+  transform: scale(1.1) rotate(30deg);
+}
+
+.form-trash:active {
+  background-color: #fff;
+}
+
 .form-submit-comment {
   font-size: 1em;
   border-radius: 10px;
   padding: 5px;
   border: none;
-  background-color: rgb(245, 135, 135);
+  background-color: #6e2afe;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   color: #fff;
@@ -532,7 +551,7 @@ textarea:focus {
     background-color: #f8f8f8;
     border-radius: 10px;
     border: none;
-    border-left: 3px solid rgb(245, 135, 135);
+    border-left: 3px solid #6e2afe;
   }
 
   .form-new-post textarea {
@@ -597,7 +616,7 @@ textarea:focus {
     background-color: #f8f8f8;
     border-radius: 10px;
     border: none;
-    border-left: 3px solid rgb(245, 135, 135);
+    border-left: 3px solid #6e2afe;
   }
 
   .form-new-post textarea {
