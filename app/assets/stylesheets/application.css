@@ -451,7 +451,7 @@ textarea:focus {
   border-radius: 10px;
   padding: 5px;
   border: none;
-  background-color: #ff0000;
+  background-color: #f00;
   cursor: pointer;
   color: #fff;
   transition: all 0.3s ease-in-out;
